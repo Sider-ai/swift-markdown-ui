@@ -33,7 +33,7 @@ struct InlineText: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: paragraphLineSpacing) {
+        VStack(alignment: .leading, spacing: 12) {
             let items = separateLatexFormulaBlock
             ForEach(0..<items.count, id: \.self) { index in
                 let nodeType = items[index]
@@ -57,6 +57,7 @@ struct InlineText: View {
                             attributes: attributes,
                             linkTextBuilder: self.theme.siderLinkTextBuilder
                         )
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     .lineSpacing(paragraphLineSpacing)
                 }

@@ -47,14 +47,12 @@ struct BlockListView: View {
     @State private var blockMargins: [Int: BlockMargin] = [:]
     
     var body: some View {
-        VStack(alignment: self.textAlignment.alignment.horizontal, spacing: 0) {
-            ForEach(nodeList) { nodeModel in
-                EquatableView(content: BlockNodeView(model: nodeModel))
-                    .onPreferenceChange(BlockMarginsPreference.self) { value in
-                        self.blockMargins[nodeModel.hashValue] = value
-                    }
-                    .padding(.top, self.topPaddingLength(for: nodeModel) ?? 16)
-            }
+        ForEach(nodeList) { nodeModel in
+            BlockNodeView(model: nodeModel)
+//                .onPreferenceChange(BlockMarginsPreference.self) { value in
+//                    self.blockMargins[nodeModel.hashValue] = value
+//                }
+//                .padding(.vertical, 4)
         }
     }
     

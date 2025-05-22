@@ -12,7 +12,11 @@ struct BlockquoteView: View {
   var body: some View {
     self.blockquote.makeBody(
       configuration: .init(
-        label: .init(BlockSequence(self.children)),
+        label: .init(
+//            VStack(alignment: .leading, spacing: 0) {
+                BlockSequence(self.children)
+//            }
+        ),
         content: .init(block: .blockquote(children: self.children))
       )
     )

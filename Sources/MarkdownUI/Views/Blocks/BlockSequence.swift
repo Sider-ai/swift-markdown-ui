@@ -37,16 +37,12 @@ Content: View
     }
     
     var body: some View {
-        VStack(alignment: self.textAlignment.alignment.horizontal, spacing: 0) {
-            ForEach(self.data, id: \.self) { element in
-                ElementView(index: element.index, element: element, content: {
-                    self.content(element.index, element.value)
-                        .onPreferenceChange(BlockMarginsPreference.self) { value in
-                            self.blockMargins[element.hashValue] = value
-                        }
-                        .padding(.top, self.topPaddingLength(for: element) ?? 0)
-                })
-            }
+        ForEach(self.data, id: \.self) { element in
+            self.content(element.index, element.value)
+//                .onPreferenceChange(BlockMarginsPreference.self) { value in
+//                    self.blockMargins[element.hashValue] = value
+//                }
+//                .padding(.top, self.topPaddingLength(for: element) ?? 2)
         }
     }
     

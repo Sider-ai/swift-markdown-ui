@@ -24,8 +24,10 @@ struct BulletedListView: View {
   }
 
   private var label: some View {
-    ListItemSequence(items: self.items, markerStyle: self.bulletedListMarker)
-      .environment(\.listLevel, self.listLevel + 1)
-      .environment(\.tightSpacingEnabled, self.isTight)
+//      VStack(alignment: .leading, spacing: 0) {
+          ListItemSequence(items: self.items, markerStyle: self.bulletedListMarker)
+            .environment(\.listLevel, self.listLevel + 1)
+            .environment(\.tightSpacingEnabled, self.isTight)
+//      }
   }
 }
