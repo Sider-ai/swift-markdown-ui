@@ -141,7 +141,7 @@ Content: View
           total: Int,
           listLevel: Int,
           markerStyle: BlockStyle<ListMarkerConfiguration>,
-          markerWidth: CGFloat?,) {
+          markerWidth: CGFloat?) {
          self.init(blocks, number: number, total: total, listLevel: listLevel, markerStyle: markerStyle, markerWidth: markerWidth) { $1 }
      }
  }
