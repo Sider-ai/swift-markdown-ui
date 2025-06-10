@@ -14,6 +14,14 @@ public enum SiderMarkdown {
     
     public static let referenceScheme = "reference"
     public static let relatedScheme = "related"
+    
+    public static var serialLinkPattern: String {
+        #"(?:(?:【\^|【C_|\^【)(\d{1,2})】|(?:\[\^|\[C_|\^\[)(\d{1,2})\])(?=\(.+\:\/\/.+)"#
+    }
+    
+    public static var serialNumberPattern: String {
+        #"(?:【\^|【C_|\^【)(\d+)】|(?:\[\^|\[C_|\^\[)(\d+)\]|\[(\^\d+(?:,\^\d+)*)\]|\[ref:(\s?\d+(?:,\s?\d+)*)\]"#
+    }
 }
 
 extension SiderMarkdown {
@@ -28,13 +36,13 @@ extension SiderMarkdown {
     
     private static let replaceSerialLinkRegular: NSRegularExpression? = {
         let options: NSRegularExpression.Options = [.caseInsensitive]
-        let pattern = #"(?:(?:【\^|【C_|\^【)(\d{1,2})】|(?:\[\^|\[C_|\^\[)(\d{1,2})\])(?=\(.+\:\/\/.+)"#
+        let pattern = serialLinkPattern
         return try? NSRegularExpression(pattern: pattern, options: options)
     }()
     
     private static var replaceSerialNumberToLinkRegular: NSRegularExpression? = {
         let options: NSRegularExpression.Options = [.caseInsensitive]
-        let pattern = #"(?:【\^|【C_|\^【)(\d+)】|(?:\[\^|\[C_|\^\[)(\d+)\]|\[(\^\d+(?:,\^\d+)*)\]|\[ref:(\s?\d+(?:,\s?\d+)*)\]"#
+        let pattern = serialNumberPattern
         return try? NSRegularExpression(pattern: pattern, options: options)
     }()
 
