@@ -16,11 +16,11 @@ import Foundation
   }
 
   public static func buildExpression(_ expression: String) -> MarkdownContent {
-    .init(expression)
+      .init(expression, processMode: .none)
   }
 
   public static func buildArray(_ components: [MarkdownContentProtocol]) -> MarkdownContent {
-    .init(components)
+      .init(components)
   }
 
   public static func buildOptional(_ component: MarkdownContentProtocol?) -> MarkdownContent {

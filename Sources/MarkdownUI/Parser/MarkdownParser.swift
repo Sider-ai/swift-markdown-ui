@@ -3,8 +3,8 @@ import Foundation
 @_implementationOnly import cmark_gfm_extensions
 
 extension Array where Element == BlockNode {
-    init(markdown: String) {
-        let siderMarkdown = SiderMarkdown.preprocessMarkdown(markdown)
+    init(markdown: String, processMode: SiderMarkdown.ProcessMode) {
+        let siderMarkdown = SiderMarkdown.preprocessMarkdown(markdown, processMode: processMode)
         let blocks = UnsafeNode.parseMarkdown(siderMarkdown) { document in
             document.children.compactMap(BlockNode.init(unsafeNode:))
         }
